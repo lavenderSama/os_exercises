@@ -8,13 +8,14 @@
 - 能，AT&T在之前的汇编课中使用过
 
 >  http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm
+>  inb一般应用程序用不到的指令等。
 
 虽然学过计算机原理和x86汇编（根据THU-CS的课程设置），但对ucore中涉及的哪些硬件设计或功能细节不够了解？
 - 进程切换机制与具体的实现
 -	寄存器使用的具体规范
 -	用户态与kernel态的切换
 
->   
+> 中断寄存器和非通用寄存器等。
 
 
 哪些困难（请分优先级）会阻碍你自主完成lab实验？
@@ -26,12 +27,15 @@
 - 编译时添加调试信息，然后在gdb中直接列出代码即可
 -	另外，通过分析堆栈调用状况也可定位原代码位置
 
->   
+> 1. 在gdb中通过break加行号得到物理地址，list加*物理地址得到行号。
+> 2. 用nm, objdump工具可以看到
 
 了解函数调用栈对lab实验有何帮助？
 - 了解函数调用栈可帮助定位程序变量的位置，内存分配状况，以及分析程序执行过程
 
->   
+> 除了错可以调试 
+> 对于函数的调用过程和程序的运行过程有更好的理解。
+> 便于调试以及检查。 
 
 你希望从lab中学到什么知识？
 - 如何从零搭建一个操作系统
@@ -47,24 +51,37 @@
 搭建好实验环境，请描述碰到的困难和解决的过程。
 - 内存设置过大，电脑带不动。。。内存调小即可
 
-> 
+> 困难：在virtualbox中设置虚拟机的时候找不到Linux的64位选项。
+> 解决：需要通过BIOS设置将电脑的虚拟化功能打开（本电脑LenovoY480的VT功能是锁的，需要打开）。
+> 开始时选择了UBUNTU 32位，不能启动，后来换成64位就能顺利运行
 
 熟悉基本的git命令行操作命令，从github上
 的 http://www.github.com/chyyuu/ucore_lab 下载
 ucore lab实验
+<<<<<<< HEAD
 - 已完成，网太卡。。。
+=======
+- [x]  
+>>>>>>> xuyong/master
 
-> 
+> clone 仓库 
+> gitclone http://www.github.com/chyyuu/ucore_lab
 
 尝试用qemu+gdb（or ECLIPSE-CDT）调试lab1
+<<<<<<< HEAD
 - 完成
+=======
+- [x]   
+>>>>>>> xuyong/master
 
-> 
+> 清除文件夹：make clean 
+> 编译lab1：make 
+> 调出debug命令行：make debug
 
 对于如下的代码段，请说明”：“后面的数字是什么含义
 ```
-/* Gate descriptors for interrupts and traps */
-struct gatedesc {
+ /* Gate descriptors for interrupts and traps */
+ struct gatedesc {
     unsigned gd_off_15_0 : 16;        // low 16 bits of offset in segment
     unsigned gd_ss : 16;            // segment selector
     unsigned gd_args : 5;            // # args, 0 for interrupt/trap gates
@@ -74,12 +91,12 @@ struct gatedesc {
     unsigned gd_dpl : 2;            // descriptor(meaning new) privilege level
     unsigned gd_p : 1;                // Present
     unsigned gd_off_31_16 : 16;        // high bits of offset in segment
-};
-```
+ };
+ ```
 
 -	定义变量的位数 
 
-> 
+> 每一个filed(域，成员变量)在struct(结构)中所占的位数; 也称“位域”，用于表示这个成员变量占多少位(bit)。
 
 对于如下的代码段，
 ```
@@ -95,7 +112,6 @@ struct gatedesc {
     (gate).gd_off_31_16 = (uint32_t)(off) >> 16;        \
 }
 ```
-
 如果在其他代码段中有如下语句，
 ```
 unsigned intr;
@@ -104,9 +120,13 @@ SETGATE(intr, 0,1,2,3);
 ```
 请问执行上述指令后， intr的值是多少？
 
+<<<<<<< HEAD
 - 65538
+=======
+- [x]  0x10002
+>>>>>>> xuyong/master
 
-> 
+> https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab0/lab0_ex3.c
 
 请分析 [list.h](https://github.com/chyyuu/ucore_lab/blob/master/labcodes/lab2/libs/list.h)内容中大致的含义，并能include这个文件，利用其结构和功能编写一个数据结构链表操作的小C程序
 -
