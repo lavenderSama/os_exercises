@@ -58,21 +58,13 @@
 熟悉基本的git命令行操作命令，从github上
 的 http://www.github.com/chyyuu/ucore_lab 下载
 ucore lab实验
-<<<<<<< HEAD
-- 已完成，网太卡。。。
-=======
-- [x]  
->>>>>>> xuyong/master
+- 已完成，网太卡。。
 
 > clone 仓库 
 > gitclone http://www.github.com/chyyuu/ucore_lab
 
 尝试用qemu+gdb（or ECLIPSE-CDT）调试lab1
-<<<<<<< HEAD
 - 完成
-=======
-- [x]   
->>>>>>> xuyong/master
 
 > 清除文件夹：make clean 
 > 编译lab1：make 
@@ -119,12 +111,7 @@ intr=8;
 SETGATE(intr, 0,1,2,3);
 ```
 请问执行上述指令后， intr的值是多少？
-
-<<<<<<< HEAD
 - 65538
-=======
-- [x]  0x10002
->>>>>>> xuyong/master
 
 > https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab0/lab0_ex3.c
 
