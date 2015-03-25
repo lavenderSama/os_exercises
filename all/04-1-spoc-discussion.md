@@ -35,6 +35,9 @@ time ./goodlocality
 ```
 可以看到其执行时间。
 
+- 原程序执行时间：0.58s
+- 将`A[i][j] = i+j;`改为`A[j][i] = i+j;`后，执行时间为0.215s
+
 ## 小组思考题目
 ----
 
@@ -72,11 +75,24 @@ PT6..0:页表的物理基址>>5
 
 请回答下列虚地址是否有合法对应的物理内存，请给出对应的pde index, pde contents, pte index, pte contents，the value of addr in phy page OR disk sector。
 ```
-Virtual Address 6653:
-Virtual Address 1c13:
-Virtual Address 6890:
-Virtual Address 0af6:
-Virtual Address 1e6f:
+Virtual Address 6653:(0 11001 10010 10011)
+	--> pde index:0x19  pde contents:(valid:0 pfn:0x7f)
+		--> no physical address
+Virtual Address 1c13:(0 00111 00000 10011)
+	--> pde index:0x7   pde contents:(valid:1 pfn:0x3d)
+		--> pte index:0x0  pte contents:(valid:1 pfn:0x76)
+			--> to physical address:0xed3	--> value:12
+Virtual Address 6890:(0 11001 00100 10000)
+	--> pde index:0x18  pde contents:(valid:0 pfn:0x7f)
+		--> no physical address
+Virtual Address 0af6:(0 00010 10111 10110)
+	--> pde index:0x2   pde contents:(valid:1 pfn:0x21)
+		--> pte index:0x17 pte contents:(valid:0 pfn:0x7f)
+			--> to disk sector address:0xff6 --> value:03
+Virtual Address 1e6f:(0 00111 10011 01111)
+	--> pde index:0x7   pde contents:(valid:1 pfn:0x3d)
+		--> pte index:0x13 pte contents:(valid:0 pfn:0x16)
+			--> to disk sector address:0x2cf --> value:1c
 ```
 
 **提示:**
